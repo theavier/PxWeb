@@ -23,9 +23,7 @@ jobs:
       run: nuget restore 
 
     - name: Build the application
-      run: msbuild /p:Configuration=$env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}
+      run: msbuild /p:Configuration=Release   
 
     - name: Prepare deploy folder
       shell: pwsh
