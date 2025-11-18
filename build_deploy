@@ -20,10 +20,10 @@ jobs:
       uses: NuGet/setup-nuget@v2
 
     - name: Restore packages
-      run: nuget restore PxWeb.sln
+      run: nuget restore PCAxis.PX-Web.sln
 
     - name: Build solution (Release)
-      run: msbuild PxWeb.sln /p:Configuration=Release /m
+      run: msbuild PCAxis.PX-Web.sln /p:Configuration=Release /m
 
     - name: Prepare deploy folder
       shell: pwsh
