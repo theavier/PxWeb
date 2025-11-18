@@ -36,7 +36,7 @@ jobs:
         # Ensure bin contains Release outputs
         Remove-Item -Path "deploy\bin" -Recurse -Force -ErrorAction Ignore
         New-Item -ItemType Directory -Force -Path "deploy\bin"
-        Copy-Item -Path "PxWeb\PxWeb.Test\bin\Release\*" -Destination "deploy\bin" -Recurse -Force
+        Copy-Item -Path "PxWeb.Test\bin\Release\*" -Destination "deploy\bin" -Recurse -Force
         # Optional: remove local dev files not needed in deployment
         Remove-Item -Path "deploy\.vs","deploy\.gitignore" -Recurse -Force -ErrorAction Ignore
 
