@@ -19,7 +19,7 @@ jobs:
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v2
 
-    - name: Restore packages
+    - name: Restore packages new
       run: nuget restore 
 
    - name: Build the application
