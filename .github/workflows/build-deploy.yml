@@ -30,6 +30,7 @@ jobs:
       run: |
           Write-Output "Current folder path is: $PWD"
           Write-Output "Or using Get-Location: $(Get-Location)"
+    
     - name: Prepare deploy folder
       shell: pwsh
       run: |
@@ -37,7 +38,7 @@ jobs:
         New-Item -ItemType Directory -Force -Path deploy
         # Copy web root contents (adjust if project path differs)
         # Assuming main web project folder is PxWeb
-        Copy-Item -Path "PxWeb\*" -Destination "deploy" -Recurse -Force
+        Copy-Item -Path "PxWeb.Test\*" -Destination "deploy" -Recurse -Force
         # Ensure bin contains Release outputs
         Remove-Item -Path "deploy\bin" -Recurse -Force -ErrorAction Ignore
         New-Item -ItemType Directory -Force -Path "deploy\bin"
@@ -49,7 +50,7 @@ jobs:
       shell: pwsh
       run: |
         #Compress-Archive -Path "deploy\*" -DestinationPath "PxWeb_Release.zip"
-        Compress-Archive -Path "PxWeb\bin\Release\*" -DestinationPath "PxWeb_Release.zip"
+        Compress-Archive -Path "PxWeb.Test\bin\Release\*" -DestinationPath "PxWeb_Release.zip"
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
