@@ -55,7 +55,8 @@ jobs:
         #Compress-Archive -Path "deploy\*" -DestinationPath "PxWeb_Release.zip"
         #Compress-Archive -Path "PxWeb.Test\*" -DestinationPath "PxWeb_Release.zip"
         #Compress-Archive -Path "PxWeb.Test\bin\Release\*" -DestinationPath "PxWeb_Release.zip"
-        #Compress-Archive -Path "publish_output/*" -DestinationPath "PxWeb_Release.zip"        
+        #Compress-Archive -Path "publish_output/*" -DestinationPath "PxWeb_Release.zip"  
+        get-childitem -path "artefacts"
         Compress-Archive -Path "artifacts\*" -DestinationPath "PxWeb_Release.zip"
 
     - name: Upload artifact
