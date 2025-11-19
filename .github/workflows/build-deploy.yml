@@ -23,7 +23,7 @@ jobs:
       run: nuget restore 
 
     - name: Build the application
-      run: msbuild /p:Configuration=Release /p:PublishDir=publish_output
+      run: msbuild /p:Configuration=Release /t:Publish /p:PublishDir=publish_output
 
     - name: Print current folder path with PowerShell
       shell: pwsh
