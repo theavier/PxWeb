@@ -29,8 +29,7 @@ jobs:
       shell: pwsh
       run: |
           Write-Output "Current folder path is: $PWD"
-          Write-Output "Or using Get-Location: $(Get-Location)"
-          get-childitem publish_output
+          Write-Output "Or using Get-Location: $(Get-Location)"          
     
     - name: Prepare deploy folder
       shell: pwsh
