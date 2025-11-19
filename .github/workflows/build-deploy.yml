@@ -20,11 +20,11 @@ jobs:
       uses: NuGet/setup-nuget@v2
 
     - name: Restore packages
-      run: nuget restore 
+      run: nuget restore PxWeb\PCAxis.PX-Web.sln
 
     - name: Build the application
       #run: msbuild /p:Configuration=Release
-      run: msbuild PXWeb/PXWeb.csproj /t:Build /p:Configuration=Release /p:OutputPath=${{ github.workspace }}\artifacts\PxWeb /p:PreBuildEvent=""
+      run: msbuild PXWeb/PXWeb.csproj /t:Build /p:Configuration=Release /p:OutputPath=${{ github.workspace }}\artifacts\PxWeb
 
     - name: Print current folder path with PowerShell
       shell: pwsh
