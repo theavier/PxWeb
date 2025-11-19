@@ -25,6 +25,11 @@ jobs:
     - name: Build the application
       run: msbuild /p:Configuration=Release   
 
+    - name: Print current folder path with PowerShell
+      shell: pwsh
+      run: |
+          Write-Output "Current folder path is: $PWD"
+          Write-Output "Or using Get-Location: $(Get-Location)"
     - name: Prepare deploy folder
       shell: pwsh
       run: |
