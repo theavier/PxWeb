@@ -24,7 +24,7 @@ jobs:
 
     - name: Build the application
       #run: msbuild /p:Configuration=Release
-      run: msbuild PXWeb/PXWeb.csproj /t:Build /p:Configuration=Release /p:OutputPath=${{ github.workspace }}\artifacts\PxWeb
+      run: msbuild PXWeb/PXWeb.csproj /t:Build /p:Configuration=Release /p:OutputPath=${{ github.workspace }}\artifacts\PxWeb /p:PreBuildEvent=""
 
     - name: Print current folder path with PowerShell
       shell: pwsh
