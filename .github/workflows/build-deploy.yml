@@ -20,7 +20,7 @@ jobs:
       uses: NuGet/setup-nuget@v2
 
     - name: Restore packages
-      run: nuget restore PxWeb\PCAxis.PX-Web.sln
+      run: nuget restore PCAxis.PX-Web.sln
 
     - name: Build the application
       #run: msbuild /p:Configuration=Release
