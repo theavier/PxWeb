@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-
+    
     steps:
     - name: Checkout source
       uses: actions/checkout@v5
@@ -19,17 +19,19 @@ jobs:
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v2
 
-    - name: Restore packages new
+    - name: Restore packages
       run: nuget restore 
 
     - name: Build the application
-      run: msbuild /p:Configuration=Release
+      #run: msbuild /p:Configuration=Release
+      run: msbuild PxWeb/PXWeb/PXWeb.csproj /t:Build /p:Configuration=Release /p:OutputPath=${{ github.workspace }}/artifacts/PxWeb
 
     - name: Print current folder path with PowerShell
       shell: pwsh
       run: |
           Write-Output "Current folder path is: $PWD"
           Write-Output "Or using Get-Location: $(Get-Location)"          
+          get-childitem
     
     - name: Prepare deploy folder
       shell: pwsh
