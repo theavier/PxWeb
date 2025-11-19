@@ -23,7 +23,7 @@ jobs:
       run: nuget restore 
 
     - name: Build the application
-      run: msbuild /p:Configuration=Release /t:Publish /p:PublishDir=publish_output
+      run: msbuild /p:Configuration=Release
 
     - name: Print current folder path with PowerShell
       shell: pwsh
@@ -51,8 +51,9 @@ jobs:
       shell: pwsh
       run: |
         #Compress-Archive -Path "deploy\*" -DestinationPath "PxWeb_Release.zip"
+        Compress-Archive -Path "PxWeb.Test\*" -DestinationPath "PxWeb_Release.zip"
         #Compress-Archive -Path "PxWeb.Test\bin\Release\*" -DestinationPath "PxWeb_Release.zip"
-        Compress-Archive -Path "publish_output/*" -DestinationPath "PxWeb_Release.zip"
+        #Compress-Archive -Path "publish_output/*" -DestinationPath "PxWeb_Release.zip"
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
