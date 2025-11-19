@@ -22,42 +22,18 @@ jobs:
     - name: Restore packages
       run: nuget restore PCAxis.PX-Web.sln
 
-    - name: Build the application
-      #run: msbuild /p:Configuration=Release
-      #run: msbuild PXWeb/PXWeb.csproj /t:Build /p:Configuration=Release /p:OutputPath=${{ github.workspace }}\artifacts\PxWeb
+    - name: Build the application      
       run: msbuild PCAxis.PX-Web.sln /t:Build /p:Configuration=Release /p:OutputPath=${{ github.workspace }}\artifacts\PxWeb
 
     - name: Print current folder path with PowerShell
       shell: pwsh
       run: |
-          Write-Output "Current folder path is: $PWD"
-          Write-Output "Or using Get-Location: $(Get-Location)"          
-          get-childitem
-    
-    - name: Prepare deploy folder
-      shell: pwsh
-      run: |
-        # Create a staging folder that mimics an IIS deployable site
-        New-Item -ItemType Directory -Force -Path deploy
-        # Copy web root contents (adjust if project path differs)
-        # Assuming main web project folder is PxWeb
-        #Copy-Item -Path "PxWeb.Test\*" -Destination "deploy" -Recurse -Force
-        # Ensure bin contains Release outputs
-        #Remove-Item -Path "deploy\bin" -Recurse -Force -ErrorAction Ignore
-        #New-Item -ItemType Directory -Force -Path "deploy\bin"
-        #Copy-Item -Path "PxWeb.Test\bin\Release\*" -Destination "deploy\bin" -Recurse -Force
-        # Optional: remove local dev files not needed in deployment
-        #Remove-Item -Path "deploy\.vs","deploy\.gitignore" -Recurse -Force -ErrorAction Ignore
-
+          Write-Output "Current folder path is: $PWD"          
+          
     - name: Zip deployable package
       shell: pwsh
-      run: |
-        #Compress-Archive -Path "deploy\*" -DestinationPath "PxWeb_Release.zip"
-        #Compress-Archive -Path "PxWeb.Test\*" -DestinationPath "PxWeb_Release.zip"
-        #Compress-Archive -Path "PxWeb.Test\bin\Release\*" -DestinationPath "PxWeb_Release.zip"
-        #Compress-Archive -Path "publish_output/*" -DestinationPath "PxWeb_Release.zip"  
-        get-childitem -path "artifacts" -Recurse
-        Compress-Archive -Path "artifacts\pxweb\*" -DestinationPath "PxWeb_Release.zip"
+      run: |        
+        Compress-Archive -Path "artifacts\pxweb\_PublishedWebsites\*" -DestinationPath "PxWeb_Release.zip"
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
