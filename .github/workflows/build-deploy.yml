@@ -13,6 +13,7 @@ jobs:
     - name: Checkout source
       uses: actions/checkout@v5        
       with:
+        repository: statisticssweden/PxWeb
         ref: "2025.v1"
         submodules: true        
 
